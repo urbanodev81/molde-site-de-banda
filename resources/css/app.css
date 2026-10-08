@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+    :root {
+        color-scheme: light;
+
+        --bg: 251 245 242;
+        --surface: 255 255 255;
+        --surface-raised: 255 255 255;
+        --surface-sunken: 244 233 227;
+        --overlay: 26 7 16;
+
+        --fg: 26 7 16;
+        --fg-muted: 74 46 59;
+        --fg-subtle: 99 68 79;
+        --fg-on-accent: 255 255 255;
+
+        --border: 234 220 212;
+        --border-subtle: 244 233 227;
+        --border-input: 124 90 103;
+        --border-strong: 184 0 74;
+
+        --accent: 184 0 74;
+        --accent-hover: 142 0 57;
+        --accent-subtle: 255 227 238;
+        --accent-ring: 255 30 111;
+
+        --success: 22 101 52;
+        --success-subtle: 228 243 233;
+        --warning: 138 83 0;
+        --warning-subtle: 251 240 218;
+        --danger: 180 35 28;
+        --danger-subtle: 253 231 229;
+        --info: 31 95 139;
+        --info-subtle: 227 238 246;
+    }
+
+    .dark {
+        color-scheme: dark;
+
+        --bg: 10 3 8;
+        --surface: 22 10 17;
+        --surface-raised: 34 18 32;
+        --surface-sunken: 5 1 3;
+        --overlay: 5 1 3;
+
+        --fg: 239 228 233;
+        --fg-muted: 198 169 182;
+        --fg-subtle: 183 154 168;
+        --fg-on-accent: 26 7 16;
+
+        --border: 46 26 36;
+        --border-subtle: 30 14 24;
+        --border-input: 142 108 122;
+        --border-strong: 255 77 141;
+
+        --accent: 255 77 141;
+        --accent-hover: 255 133 176;
+        --accent-subtle: 61 10 32;
+        --accent-ring: 255 77 141;
+
+        --success: 91 208 139;
+        --success-subtle: 12 42 24;
+        --warning: 251 191 36;
+        --warning-subtle: 51 40 10;
+        --danger: 255 138 128;
+        --danger-subtle: 61 16 13;
+        --info: 127 180 203;
+        --info-subtle: 13 35 45;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    :focus-visible {
+        outline: 2px solid rgb(var(--accent-ring));
+        outline-offset: 2px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+html.a11y-fonte-1 {
+    font-size: 112.5%;
+}
+
+html.a11y-fonte-2 {
+    font-size: 125%;
+}
+
+html.a11y-sublinhar-links a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+html.a11y-espacamento-texto,
+html.a11y-espacamento-texto * {
+    letter-spacing: 0.12em !important;
+    word-spacing: 0.16em !important;
+    line-height: 1.6 !important;
+}
+
+html.a11y-pausar-animacoes *,
+html.a11y-pausar-animacoes *::before,
+html.a11y-pausar-animacoes *::after {
+    animation-play-state: paused !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+}
+
+html.dock-vlibras #vlibras-access-wrapper,
+html.dock-vlibras [vw-access-button] {
+    opacity: 0 !important;
+    pointer-events: none !important;
+}

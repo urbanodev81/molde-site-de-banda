@@ -1,0 +1,47 @@
+# O que NÃO entra na imagem de produção.
+#
+# O `COPY . .` do docker/production/Dockerfile leva a árvore inteira. Sem
+# esta lista, dois problemas reais acontecem:
+#
+# 1. `bootstrap/cache/packages.php` vem da máquina de desenvolvimento, onde
+#    o Composer instalou as dependências DE DEV. A imagem roda
+#    `composer install --no-dev`, então o Laravel lê no cache um provider
+#    que não existe ali e morre no boot com "Class Laravel\Pail\
+#    PailServiceProvider not found" — em TODO comando artisan, inclusive o
+#    migrate do primeiro deploy. Foi exatamente isto no deploy de 09/08/2026.
+#
+# 2. `vendor/` e `node_modules/` da máquina local sobrescreveriam os que os
+#    estágios `vendor` e `assets` acabaram de resolver na versão certa de
+#    PHP e Node — além de mandar centenas de megabytes de contexto para o
+#    daemon a cada build.
+
+.git
+.github
+.githooks
+node_modules
+vendor
+public/build
+public/hot
+public/storage
+
+# Cache de descoberta de pacote e de configuração: refeitos no deploy, com
+# o .env real presente.
+bootstrap/cache/*.php
+
+storage/logs/*
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*
+
+.env
+.env.*
+!.env.example
+
+# Só desenvolvimento local
+compose.yaml
+sail
+docker/8.5
+tests
+phpunit.xml
+.phpunit.result.cache
+.phpunit.cache

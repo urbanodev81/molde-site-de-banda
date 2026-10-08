@@ -1,0 +1,182 @@
+.v3-troca {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+    gap: 10px; margin: 16px auto 0; padding: 8px 12px;
+    border: 1px dashed rgba(255, 255, 255, .22); border-radius: 9999px;
+    width: fit-content; max-width: calc(100% - 32px);
+}
+.v3-troca__rotulo {
+    font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+    opacity: .72;
+}
+.v3-troca label {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px;
+    border-radius: 9999px; cursor: pointer; font-size: 14px; font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, .2);
+}
+
+.v3-troca input:focus-visible + label { outline: 3px solid var(--acento-vivo); outline-offset: 3px; }
+.v3-troca input:checked + label {
+    background: var(--acento-vivo); border-color: var(--acento-vivo); color: #0d0719;
+}
+
+.cena-v3 { width: 100%; height: 100%; }
+
+@media (max-width: 899.98px) {
+    .marca-v3 {
+        position: absolute; z-index: 1; left: 50%; top: 5%; translate: -50% 0;
+        width: 84%; aspect-ratio: 1.63; height: auto;
+        display: grid; place-items: center; pointer-events: none;
+    }
+    .marca-v3__tipo {
+        position: relative; z-index: 1; width: 68.5%; height: auto;
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, .7))
+                drop-shadow(0 0 22px rgba(255, 45, 147, .32));
+    }
+
+    html.js .palco-sec--v3 .palco__breu { display: none; }
+}
+
+.marca-v3__prato {
+    position: absolute; inset: 0; border-radius: 50%;
+    border: clamp(3px, .34vw, 6px) solid var(--acento-vivo);
+    background: radial-gradient(ellipse at 50% 45%,
+                rgba(78, 12, 52, .42), rgba(10, 3, 8, .16) 62%, transparent 76%);
+    box-shadow: 0 0 38px rgba(255, 45, 147, .5),
+                inset 0 0 52px rgba(255, 45, 147, .26);
+
+    -webkit-mask-image: linear-gradient(180deg, #000 58%, transparent 92%);
+    mask-image: linear-gradient(180deg, #000 58%, transparent 92%);
+}
+
+.palco-sec--v3:has(#v3-disco:checked) .marca-v3__prato {
+    background:
+
+        radial-gradient(1.6px 1.6px at 21% 24%, rgba(255, 255, 255, .95), transparent 62%),
+        radial-gradient(1.2px 1.2px at 33% 62%, rgba(255, 255, 255, .75), transparent 62%),
+        radial-gradient(1.8px 1.8px at 47% 18%, rgba(255, 255, 255, .9), transparent 62%),
+        radial-gradient(1.1px 1.1px at 62% 71%, rgba(255, 235, 250, .7), transparent 62%),
+        radial-gradient(1.7px 1.7px at 74% 31%, rgba(255, 255, 255, .88), transparent 62%),
+        radial-gradient(1.2px 1.2px at 83% 57%, rgba(255, 255, 255, .7), transparent 62%),
+        radial-gradient(1.4px 1.4px at 57% 44%, rgba(255, 255, 255, .8), transparent 62%),
+
+        radial-gradient(ellipse 44% 50% at 64% 60%, rgba(255, 72, 163, .40), transparent 72%),
+        radial-gradient(ellipse 50% 44% at 33% 37%, rgba(104, 92, 255, .36), transparent 74%),
+
+        radial-gradient(ellipse 74% 76% at 50% 46%, #2b1152 0%, #140829 54%, #070311 100%);
+    box-shadow: 0 0 46px rgba(255, 45, 147, .58),
+                inset 0 0 70px rgba(4, 1, 10, .8);
+}
+
+html.js .marca-v3 {
+    opacity: 0;
+    animation: acende-marca 1.1s cubic-bezier(.2, .9, .3, 1) var(--t-marca) forwards;
+}
+@keyframes acende-marca {
+    0%   { opacity: 0; scale: .94; }
+    34%  { opacity: 1; scale: 1; }
+    46%  { opacity: .32; }
+    58%  { opacity: 1; }
+    68%  { opacity: .5; }
+    100% { opacity: 1; scale: 1; }
+}
+
+@media (min-width: 900px) {
+
+.palco-sec--v3 { padding-top: clamp(8px, 1.6vh, 22px); padding-bottom: clamp(10px, 2vw, 24px); }
+
+.sangria--v3 {
+    inset: -12% -10%;
+    filter: blur(64px) saturate(1.25) brightness(.66);
+    opacity: .95;
+}
+
+.palco-area--v3 { width: 100%; max-width: 1292px; }
+
+.palco--v3 {
+
+    --alt: min(76vh, 780px);
+    --cena-h: min(calc(var(--alt) * .575), 402px);
+    --marca-h: calc(var(--alt) * .61);
+
+    --recuo: calc(var(--alt) * .185);
+
+    display: flex; flex-direction: column; align-items: center;
+    width: min(1292px, 100%); margin-inline: auto;
+
+    -webkit-mask-image: none; mask-image: none;
+    aspect-ratio: auto;
+}
+
+.marca-v3 {
+    position: relative; z-index: 1;
+    height: var(--marca-h);
+    width: calc(var(--marca-h) * 1.63);
+    max-width: 100%;
+    margin-bottom: calc(var(--recuo) * -1);
+    display: grid; place-items: center;
+}
+
+.marca-v3__tipo {
+    position: relative; z-index: 1;
+    width: calc(var(--marca-h) * 1.116); height: auto; max-width: 88%;
+    filter: drop-shadow(0 6px 20px rgba(0, 0, 0, .7))
+            drop-shadow(0 0 34px rgba(255, 45, 147, .32));
+}
+
+html.js .palco__breu { display: none; }
+
+.cena-v3 {
+    position: relative;
+    height: var(--cena-h); width: auto; max-width: 100%;
+    aspect-ratio: 1292 / 402;
+
+}
+
+.cena-v3 .palco__arte {
+    width: 100%; height: 100%; object-fit: contain;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+}
+
+.palco-sec--v3 .adesivo:not(.adesivo--2) {
+    left: 9% !important; right: auto !important;
+    top: 30% !important; bottom: auto !important;
+}
+.palco-sec--v3 .adesivo--2 {
+    right: 8% !important; left: auto !important;
+    bottom: 20% !important; top: auto !important;
+}
+
+.elenco--v3 .elenco__m {
+
+    --f: .50;
+
+    --espalha: .74;
+
+    --piso: 20%;
+    width: calc(var(--larg) * var(--f));
+    left: calc(50% + (var(--esq) - 50%) * var(--espalha));
+    bottom: calc(var(--piso) + var(--base) * 3.214 * var(--f));
+}
+
+.elenco--v3 .elenco__m img {
+    -webkit-mask-image: linear-gradient(180deg, #000 80%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 80%, transparent 100%);
+    filter: drop-shadow(0 12px 20px rgba(0, 0, 0, .82))
+            drop-shadow(0 0 28px rgba(255, 45, 147, .2));
+}
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    html.js .marca-v3 {
+        opacity: 1; scale: 1;
+        animation: acende-marca-fade 1.1s ease var(--t-marca) both !important;
+    }
+}
+
+@keyframes acende-marca-fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

@@ -1,0 +1,47 @@
+name: site-de-banda
+
+services:
+    laravel.test:
+        restart: unless-stopped
+        build:
+            context: './vendor/laravel/sail/runtimes/8.5'
+            dockerfile: Dockerfile
+            args:
+                WWWGROUP: '${WWWGROUP}'
+        image: 'sail-8.5/app'
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+        ports:
+            - '${APP_PORT:-8099}:80'
+            - '${VITE_PORT:-5182}:${VITE_PORT:-5182}'
+        environment:
+            WWWUSER: '${WWWUSER}'
+            LARAVEL_SAIL: 1
+            XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
+            XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
+            IGNITION_LOCAL_SITES_PATH: '${PWD}'
+            VITE_PORT: '${VITE_PORT:-5182}'
+        volumes:
+            - '.:/var/www/html'
+        networks:
+            - exemplo
+
+    scheduler:
+        image: 'sail-8.5/app'
+        restart: unless-stopped
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+        command: 'php artisan schedule:work'
+        environment:
+            WWWUSER: '${WWWUSER}'
+            LARAVEL_SAIL: 1
+        volumes:
+            - '.:/var/www/html'
+        networks:
+            - exemplo
+        depends_on:
+            - laravel.test
+
+networks:
+    exemplo:
+        external: true

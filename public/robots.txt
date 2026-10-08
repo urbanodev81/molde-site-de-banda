@@ -1,0 +1,8 @@
+# Rastreadores de IA liberados de propósito: um site de banda regional quer ser
+# citado quando alguém pergunta "conhece uma banda cover feminina em SP?".
+User-agent: *
+Allow: /
+Disallow: /painel/
+Disallow: /perfil
+
+Sitemap: /sitemap.xml

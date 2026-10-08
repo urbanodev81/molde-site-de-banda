@@ -1,0 +1,45 @@
+:root {
+    --surface: 22 10 17;
+
+    --fg: 239 228 233;
+    --fg-subtle: 183 154 168;
+    --fg-on-accent: 26 7 16;
+
+    --border: 46 26 36;
+    --border-input: 142 108 122;
+    --border-strong: 255 77 141;
+
+    --accent: 255 77 141;
+    --accent-hover: 255 133 176;
+    --accent-subtle: 61 10 32;
+    --accent-ring: 255 77 141;
+}
+
+:where(#acessibilidade) *,
+:where(#acessibilidade) *::before,
+:where(#acessibilidade) *::after {
+    box-sizing: border-box;
+    border: 0 solid rgb(var(--border));
+}
+
+:where(#acessibilidade) button,
+:where(#acessibilidade) [type='button'] {
+    -webkit-appearance: button;
+    appearance: button;
+    background-color: transparent;
+    background-image: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+:where(#acessibilidade) button,
+:where(#acessibilidade) input,
+:where(#acessibilidade) select,
+:where(#acessibilidade) textarea {
+    font: inherit;
+    color: inherit;
+    margin: 0;
+}
+
+@tailwind components;
+@tailwind utilities;
